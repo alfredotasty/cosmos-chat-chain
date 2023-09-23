@@ -24,7 +24,6 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 type ChatPacketData struct {
 	// Types that are valid to be assigned to Packet:
-	//
 	//	*ChatPacketData_NoData
 	Packet isChatPacketData_Packet `protobuf_oneof:"packet"`
 }

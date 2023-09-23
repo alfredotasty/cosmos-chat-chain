@@ -31,3 +31,8 @@ var (
 func KeyPrefix(p string) []byte {
 	return []byte(p)
 }
+
+const (
+	MessagesKey      = "Messages-value-"
+	MessagesCountKey = "Messages-count-"
+)

@@ -3,6 +3,7 @@ package chat.chat;
 
 import "gogoproto/gogo.proto";
 import "chat/params.proto";
+import "chat/messages.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "chat/x/chat/types";
@@ -11,5 +12,7 @@ option go_package = "chat/x/chat/types";
 message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
   string port_id = 2;
+  repeated Messages messagesList = 3 [(gogoproto.nullable) = false];
+  uint64 messagesCount = 4;
   // this line is used by starport scaffolding # genesis/proto/state
 }

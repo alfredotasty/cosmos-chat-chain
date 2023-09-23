@@ -1,0 +1,10 @@
+syntax = "proto3";
+package chat.chat;
+
+option go_package = "chat/x/chat/types";
+
+message Messages {
+  uint64 id = 1;
+  string body = 2; 
+  string creator = 3;
+}
