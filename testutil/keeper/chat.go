@@ -5,6 +5,7 @@ import (
 
 	"chat/x/chat/keeper"
 	"chat/x/chat/types"
+
 	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/store"
