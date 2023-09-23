@@ -23,6 +23,8 @@ export interface ChatMsgCreateMessagesResponse {
 
 export type ChatMsgDeleteMessagesResponse = object;
 
+export type ChatMsgSendMessagePacketResponse = object;
+
 export type ChatMsgUpdateMessagesResponse = object;
 
 /**

@@ -4,10 +4,12 @@ import { Message } from "./module/types/chat/message"
 import { Messages } from "./module/types/chat/messages"
 import { ChatPacketData } from "./module/types/chat/packet"
 import { NoData } from "./module/types/chat/packet"
+import { MessagePacketPacketData } from "./module/types/chat/packet"
+import { MessagePacketPacketAck } from "./module/types/chat/packet"
 import { Params } from "./module/types/chat/params"
 
 
-export { Message, Messages, ChatPacketData, NoData, Params };
+export { Message, Messages, ChatPacketData, NoData, MessagePacketPacketData, MessagePacketPacketAck, Params };
 
 async function initTxClient(vuexGetters) {
 	return await txClient(vuexGetters['common/wallet/signer'], {
@@ -54,6 +56,8 @@ const getDefaultState = () => {
 						Messages: getStructure(Messages.fromPartial({})),
 						ChatPacketData: getStructure(ChatPacketData.fromPartial({})),
 						NoData: getStructure(NoData.fromPartial({})),
+						MessagePacketPacketData: getStructure(MessagePacketPacketData.fromPartial({})),
+						MessagePacketPacketAck: getStructure(MessagePacketPacketAck.fromPartial({})),
 						Params: getStructure(Params.fromPartial({})),
 						
 		},
@@ -250,6 +254,21 @@ export default {
 				}
 			}
 		},
+		async sendMsgSendMessagePacket({ rootGetters }, { value, fee = [], memo = '' }) {
+			try {
+				const txClient=await initTxClient(rootGetters)
+				const msg = await txClient.msgSendMessagePacket(value)
+				const result = await txClient.signAndBroadcast([msg], {fee: { amount: fee, 
+	gas: "200000" }, memo})
+				return result
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgSendMessagePacket:Init Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new Error('TxClient:MsgSendMessagePacket:Send Could not broadcast Tx: '+ e.message)
+				}
+			}
+		},
 		
 		async MsgDeleteMessages({ rootGetters }, { value }) {
 			try {
@@ -287,6 +306,19 @@ export default {
 					throw new Error('TxClient:MsgUpdateMessages:Init Could not initialize signing client. Wallet is required.')
 				} else{
 					throw new Error('TxClient:MsgUpdateMessages:Create Could not create message: ' + e.message)
+				}
+			}
+		},
+		async MsgSendMessagePacket({ rootGetters }, { value }) {
+			try {
+				const txClient=await initTxClient(rootGetters)
+				const msg = await txClient.msgSendMessagePacket(value)
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new Error('TxClient:MsgSendMessagePacket:Init Could not initialize signing client. Wallet is required.')
+				} else{
+					throw new Error('TxClient:MsgSendMessagePacket:Create Could not create message: ' + e.message)
 				}
 			}
 		},

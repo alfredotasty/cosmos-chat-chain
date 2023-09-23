@@ -11,6 +11,7 @@ service Msg {
     rpc CreateMessages(MsgCreateMessages) returns (MsgCreateMessagesResponse);
   rpc UpdateMessages(MsgUpdateMessages) returns (MsgUpdateMessagesResponse);
   rpc DeleteMessages(MsgDeleteMessages) returns (MsgDeleteMessagesResponse);
+  rpc SendMessagePacket(MsgSendMessagePacket) returns (MsgSendMessagePacketResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
@@ -38,4 +39,15 @@ message MsgDeleteMessages {
 
 message MsgDeleteMessagesResponse {}
 
+message MsgSendMessagePacket {
+  string creator = 1;
+  string port = 2;
+  string channelID = 3;
+  uint64 timeoutTimestamp = 4;
+  string body = 5;
+  string user = 6;
+}
+
+message MsgSendMessagePacketResponse {
+}
 // this line is used by starport scaffolding # proto/tx/message

@@ -29683,6 +29683,8 @@ definitions:
         format: uint64
   chat.chat.MsgDeleteMessagesResponse:
     type: object
+  chat.chat.MsgSendMessagePacketResponse:
+    type: object
   chat.chat.MsgUpdateMessagesResponse:
     type: object
   chat.chat.Params:

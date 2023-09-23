@@ -33,6 +33,7 @@ func GetTxCmd() *cobra.Command {
 	cmd.AddCommand(CmdCreateMessages())
 	cmd.AddCommand(CmdUpdateMessages())
 	cmd.AddCommand(CmdDeleteMessages())
+	cmd.AddCommand(CmdSendMessagePacket())
 	// this line is used by starport scaffolding # 1
 
 	return cmd
