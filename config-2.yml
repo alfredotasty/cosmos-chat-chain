@@ -1,0 +1,22 @@
+accounts:
+  - name: alice
+    coins: ["200000000stake"]
+  - name: relayer
+    coins: ["200000000stake"]
+    address: "cosmos1lahx0cvyyfldcd2yf29rk2tadlepjn58elfk54"
+validator:
+  name: alice
+  staked: "100000000stake"
+
+init:
+  home: "~/.chat-2"
+
+genesis:
+  chain_id: "chat-2"
+
+host:
+  rpc: ":36657"
+  p2p: ":36658"
+  prof: ":7060"
+  grpc: ":10091"
+  api: ":2337"

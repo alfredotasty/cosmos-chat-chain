@@ -1,0 +1,22 @@
+accounts:
+  - name: nammon
+    coins: ["200000000stake"]
+  - name: relayer
+    coins: ["200000000stake"]
+    address: "cosmos1lahx0cvyyfldcd2yf29rk2tadlepjn58elfk54"
+validator:
+  name: nammon
+  staked: "100000000stake"
+
+init:
+  home: "~/.chat-1"
+
+genesis:
+  chain_id: "chat-1"
+
+host:
+  rpc: ":26657"
+  p2p: ":26658"
+  prof: ":6060"
+  grpc: ":9091"
+  api: ":1337"
