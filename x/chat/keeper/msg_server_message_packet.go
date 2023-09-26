@@ -17,7 +17,7 @@ func (k msgServer) SendMessagePacket(goCtx context.Context, msg *types.MsgSendMe
 	// store packet before transmit to another chain
 	k.AppendMessages(ctx, types.Messages{
 		Creator: msg.User,
-		Body:    msg.User,
+		Body:    msg.Body,
 	})
 
 	// Construct the packet
