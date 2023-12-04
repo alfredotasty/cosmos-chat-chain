@@ -2,7 +2,7 @@
 **chat** is a blockchain built using Cosmos SDK and Tendermint and created with [Ignite CLI](https://ignite.com/cli).
 
 
-## Project explaain 
+## Project explain 
 Create 2 difference blockchain (not node) by using cosmos SDK and sending message to another chain via ***IBC***
 
 
